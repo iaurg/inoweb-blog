@@ -12,7 +12,6 @@ export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
 
   const router = useRouter();
-  //console.log(router.query.category);
 
   const { data: posts } = usePreviewSubscription(postquery, {
     initialData: postdata,
@@ -23,10 +22,11 @@ export default function Post(props) {
     initialData: siteconfig,
     enabled: preview || router.query.preview !== undefined
   });
-  //console.log(posts);
+
   const ogimage = siteConfig?.openGraphImage
     ? GetImage(siteConfig?.openGraphImage).src
     : defaultOG.src;
+
   return (
     <>
       {posts && siteConfig && (
@@ -47,7 +47,7 @@ export default function Post(props) {
                   alt: ""
                 }
               ],
-              site_name: "Stablo"
+              site_name: "inoweb"
             }}
             twitter={{
               cardType: "summary_large_image"

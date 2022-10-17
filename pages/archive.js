@@ -1,6 +1,3 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Layout from "@components/layout";
 import Container from "@components/container";
@@ -17,7 +14,6 @@ export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
 
   const router = useRouter();
-  //console.log(router.query.category);
 
   const { data: posts } = usePreviewSubscription(postquery, {
     initialData: postdata,
@@ -28,10 +24,11 @@ export default function Post(props) {
     initialData: siteconfig,
     enabled: preview || router.query.preview !== undefined
   });
-  //console.log(posts);
+
   const ogimage = siteConfig?.openGraphImage
     ? GetImage(siteConfig?.openGraphImage).src
     : defaultOG.src;
+
   return (
     <>
       {posts && siteConfig && (
@@ -52,7 +49,7 @@ export default function Post(props) {
                   alt: ""
                 }
               ],
-              site_name: "Stablo"
+              site_name: "inoweb"
             }}
             twitter={{
               cardType: "summary_large_image"
@@ -60,11 +57,11 @@ export default function Post(props) {
           />
           <Container>
             <h1 className="text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-              Archive
+              Arquivos
             </h1>
             <div className="text-center">
               <p className="mt-2 text-lg">
-                See all posts we have ever written.
+                Veja todos os posts que já escrevemos.
               </p>
             </div>
             <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">

@@ -39,6 +39,7 @@ export default function Post(props) {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   const imageProps = post?.mainImage
     ? GetImage(post?.mainImage)
     : null;
@@ -136,11 +137,11 @@ export default function Post(props) {
                           parseISO(
                             post?.publishedAt || post._createdAt
                           ),
-                          "MMMM dd, yyyy"
+                          "dd MMMM, yyyy"
                         )}
                       </time>
                       <span>
-                        · {post.estReadingTime || "5"} min read
+                        · {post.estReadingTime || "5"} min para ler
                       </span>
                     </div>
                   </div>
@@ -173,7 +174,7 @@ export default function Post(props) {
               <div className="flex justify-center mt-7 mb-7">
                 <Link href="/">
                   <a className="px-5 py-2 text-sm text-blue-600 rounded-full dark:text-blue-500 bg-brand-secondary/20 ">
-                    ← View all posts
+                    ← Ver todos os posts
                   </a>
                 </Link>
               </div>

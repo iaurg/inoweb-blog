@@ -1,23 +1,5 @@
 # Stablo Blog Template - Next.js & Sanity CMS
 
-Stablo is a JAMStack Starter template built with Next.js, Tailwind CSS & Sanity CMS by [Web3Templates](https://web3templates.com/).
-
-**[Click here to see live demo →](https://web3templates.com/preview/stablo)**
-
-<a href="https://www.sanity.io/create?template=web3templates%2Fstablo">
-<img width="259" alt="Deploy to Vercel & Sanity" src="https://user-images.githubusercontent.com/1884712/169833532-1007b9aa-1456-4386-9526-7b5b46b094ed.png">
-</a>
-
-###### Click the above button for one-click clone & deploy for this template. Read [quick start](#quick-start) guide below.
-
-#### Template Preview
-
-[![Next.js Front-end Preview](https://user-images.githubusercontent.com/1884712/169838344-e32b7426-621a-45a4-aba8-afedf3377e1f.jpeg)](https://web3templates.com/preview/stablo)
-
-#### Sanity CMS Preview
-
-[![Backend Sanity CMS Preview](https://user-images.githubusercontent.com/1884712/170030678-c6e32d47-0b92-42b7-ac2d-f3cf800c0969.png)](https://stablo-template.vercel.app/studio)
-
 ## Quick Start
 
 To use this template and configure sanity and deploying to vercel, we recommend the "One Click Deploy" method. Just follow the GUI and you will have an exact copy of what you see in the live demo .Using this method will automatically configure the following tasks for you.
@@ -98,7 +80,3 @@ yarn sanity
 # or
 cd studio && sanity start
 ```
-
-## Sponsor
-
-<a href="https://vercel.com/?utm_source=web3templates&amp;utm_campaign=oss" rel="nofollow"><img src="https://camo.githubusercontent.com/37b009b52b3a9af7886f52e75cd76d1b32fef331ab1dc2108089c0ced0b7635f/68747470733a2f2f7777772e6461746f636d732d6173736574732e636f6d2f33313034392f313631383938333239372d706f77657265642d62792d76657263656c2e737667" alt="image" style="max-width: 70%;"></a>

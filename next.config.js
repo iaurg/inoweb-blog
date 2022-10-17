@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["cdn.sanity.io"],
+    domains: ["cdn.sanity.io", "inoweb.com.br"],
     loader: "custom"
   },
   swcMinify: true,
