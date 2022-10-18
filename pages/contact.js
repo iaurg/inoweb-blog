@@ -1,6 +1,5 @@
 import Container from "@components/container";
 import Layout from "@components/layout";
-import { getClient } from "@lib/sanity";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "use-web3forms";
@@ -25,7 +24,6 @@ export default function Contact({ siteconfig }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState(false);
 
-  // Please update the Access Key in the Sanity CMS - Site Config Page
   const apiKey = siteconfig?.w3ckey || "YOUR_ACCESS_KEY_HERE";
 
   const { submit: onSubmit } = useWeb3Forms({

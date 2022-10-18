@@ -4,7 +4,7 @@ import Container from "@components/container";
 // import Subpagehero from "@components/sections/subpagehero";
 // import Categories from "@components/categories";
 import { useRouter } from "next/router";
-import { getClient, usePreviewSubscription } from "@lib/sanity";
+
 import defaultOG from "../public/img/opengraph.jpg";
 import { postquery, configQuery } from "@lib/groq";
 import GetImage from "@utils/getImage";

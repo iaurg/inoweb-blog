@@ -1,7 +1,7 @@
 import Container from "@components/container";
 import Layout from "@components/layout";
 import { authorsquery, configQuery } from "@lib/groq";
-import { getClient } from "@lib/sanity";
+
 import GetImage from "@utils/getImage";
 import Image from "next/image";
 import Link from "next/link";

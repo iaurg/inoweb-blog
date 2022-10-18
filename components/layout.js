@@ -13,10 +13,7 @@ export default function Layout(props) {
   const ogimage = GetImage(props?.openGraphImage)?.src ?? "";
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://cdn.sanity.io/" />
-        <link rel="dns-prefetch" href="https://cdn.sanity.io//" />
-      </Head>
+      <Head></Head>
       <NextSeo
         title={props.title}
         description={props.description}

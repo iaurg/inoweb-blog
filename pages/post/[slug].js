@@ -1,17 +1,13 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Layout from "@components/layout";
 import Container from "@components/container";
 import { useRouter } from "next/router";
-import client, {
-  getClient,
-  usePreviewSubscription,
-  PortableText
-} from "@lib/sanity";
+
 import ErrorPage from "next/error";
 import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
+import locale from "date-fns/locale/pt-BR";
 import { NextSeo } from "next-seo";
 import defaultOG from "/public/img/opengraph.jpg";
 
@@ -137,7 +133,8 @@ export default function Post(props) {
                           parseISO(
                             post?.publishedAt || post._createdAt
                           ),
-                          "dd MMMM, yyyy"
+                          "dd MMMM, yyyy",
+                          { locale }
                         )}
                       </time>
                       <span>
