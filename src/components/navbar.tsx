@@ -4,8 +4,14 @@ import Container from "@components/container";
 import Link from "next/link";
 import Image from "next/image";
 
+type MenuItem = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
 export default function Navbar(props) {
-  const leftmenu = [
+  const leftmenu: MenuItem[] = [
     {
       label: "Inicio",
       href: "/"
@@ -20,19 +26,19 @@ export default function Navbar(props) {
     }
   ];
 
-  const rightmenu = [
+  const rightmenu: MenuItem[] = [
     {
       label: "Archive",
       href: "/archive"
     },
     {
       label: "Github",
-      href: "",
+      href: "https://github.com/segredo-dev",
       external: true
     },
     {
       label: "Download",
-      href: "",
+      href: "https://github.com/segredo-dev",
       external: true
     }
   ];
