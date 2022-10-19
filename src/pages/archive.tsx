@@ -1,9 +1,12 @@
 import { NextSeo } from "next-seo";
 import Layout from "@components/layout";
 import Container from "@components/container";
+// import Subpagehero from "@components/sections/subpagehero";
+// import Categories from "@components/categories";
 import { useRouter } from "next/router";
+
 import defaultOG from "../public/img/opengraph.jpg";
-import { postquery, configQuery } from "@lib/groq";
+import { postquery, configQuery } from "lib/groq";
 import GetImage from "@utils/getImage";
 import PostList from "@components/postlist";
 
@@ -31,12 +34,12 @@ export default function Post(props) {
       {posts && siteConfig && (
         <Layout {...siteConfig}>
           <NextSeo
-            title={`${siteConfig?.title}`}
+            title={`Blog — ${siteConfig?.title}`}
             description={siteConfig?.description || ""}
             canonical={siteConfig?.url}
             openGraph={{
               url: siteConfig?.url,
-              title: `${siteConfig?.title}`,
+              title: `Blog — ${siteConfig?.title}`,
               description: siteConfig?.description || "",
               images: [
                 {
@@ -53,18 +56,16 @@ export default function Post(props) {
             }}
           />
           <Container>
-            <div className="grid gap-10 lg:gap-10 md:grid-cols-2 ">
-              {posts.slice(0, 2).map(post => (
-                <PostList
-                  key={post._id}
-                  post={post}
-                  aspect="landscape"
-                  preloadImage={true}
-                />
-              ))}
+            <h1 className="text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
+              Arquivos
+            </h1>
+            <div className="text-center">
+              <p className="mt-2 text-lg">
+                Veja todos os posts que já escrevemos.
+              </p>
             </div>
             <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
-              {posts.slice(2).map(post => (
+              {posts.map(post => (
                 <PostList
                   key={post._id}
                   post={post}

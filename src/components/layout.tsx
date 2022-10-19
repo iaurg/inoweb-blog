@@ -1,7 +1,5 @@
 import React from "react";
-import Head from "next/head";
 import { NextSeo } from "next-seo";
-import GetImage from "@utils/getImage";
 import Navbar from "@components/navbar";
 // import defaultOG from "../public/img/og-default.jpg";
 
@@ -10,10 +8,9 @@ import Footer from "@components/footer";
 
 export default function Layout(props) {
   const { children } = props;
-  const ogimage = GetImage(props?.openGraphImage)?.src ?? "";
+  const ogimage = "";
   return (
     <>
-      <Head></Head>
       <NextSeo
         title={props.title}
         description={props.description}

@@ -1,9 +1,8 @@
 import Container from "@components/container";
 import Layout from "@components/layout";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "use-web3forms";
-import { configQuery } from "@lib/groq";
 import {
   LocationMarkerIcon,
   MailIcon,
@@ -28,7 +27,7 @@ export default function Contact({ siteconfig }) {
 
   const { submit: onSubmit } = useWeb3Forms({
     apikey: apiKey,
-    from_name: "inoweb Blog",
+    from_name: "inoweb_blog",
     subject: "Nova mensagem de contato do blog",
     onSuccess: (msg, data) => {
       setIsSuccess(true);
@@ -208,16 +207,4 @@ export default function Contact({ siteconfig }) {
       </Container>
     </Layout>
   );
-}
-
-export async function getStaticProps({ params, preview = false }) {
-  const config = await getClient(preview).fetch(configQuery);
-
-  return {
-    props: {
-      siteconfig: { ...config },
-      preview
-    },
-    revalidate: 100
-  };
 }

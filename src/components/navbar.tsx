@@ -3,22 +3,20 @@ import { Disclosure } from "@headlessui/react";
 import Container from "@components/container";
 import Link from "next/link";
 import Image from "next/image";
-import GetImage from "@utils/getImage";
-import { myLoader } from "@utils/all";
 
 export default function Navbar(props) {
   const leftmenu = [
     {
-      label: "Home",
+      label: "Inicio",
       href: "/"
     },
     {
-      label: "About",
-      href: "/about"
+      label: "Sobre",
+      href: "/sobre"
     },
     {
-      label: "Contact",
-      href: "/contact"
+      label: "Contato",
+      href: "/contato"
     }
   ];
 
@@ -29,12 +27,12 @@ export default function Navbar(props) {
     },
     {
       label: "Github",
-      href: "https://github.com/web3templates/stablo",
+      href: "",
       external: true
     },
     {
       label: "Download",
-      href: "https://web3templates.com/templates/stablo-minimal-blog-website-template",
+      href: "",
       external: true
     }
   ];
@@ -62,14 +60,14 @@ export default function Navbar(props) {
                     <a className="w-28 dark:hidden">
                       {props.logo ? (
                         <Image
-                          {...GetImage(props.logo)}
+                          src=""
                           alt="Logo"
                           sizes="(max-width: 640px) 100vw, 200px"
                           priority={true}
                         />
                       ) : (
                         <span className="block text-center">
-                          Stablo
+                          inoweb
                         </span>
                       )}
                     </a>
@@ -78,14 +76,14 @@ export default function Navbar(props) {
                     <a className="hidden w-28 dark:block">
                       {props.logoalt ? (
                         <Image
-                          {...GetImage(props.logoalt)}
+                          src=""
                           alt="Logo"
                           sizes="(max-width: 640px) 100vw, 200px"
                           priority={true}
                         />
                       ) : (
                         <span className="block text-center">
-                          Stablo
+                          inoweb
                         </span>
                       )}
                     </a>

@@ -1,10 +1,23 @@
+import Head from "next/head";
+import Layout from "@components/layout";
+
+export default function Index() {
+  return (
+    <Layout>
+      <Head>
+        <title>Next.js Blog Example with</title>
+      </Head>
+      <h1>Hello</h1>
+    </Layout>
+  );
+}
+
+/*
+
 import { NextSeo } from "next-seo";
 import Layout from "@components/layout";
 import Container from "@components/container";
-// import Subpagehero from "@components/sections/subpagehero";
-// import Categories from "@components/categories";
 import { useRouter } from "next/router";
-
 import defaultOG from "../public/img/opengraph.jpg";
 import { postquery, configQuery } from "@lib/groq";
 import GetImage from "@utils/getImage";
@@ -34,12 +47,12 @@ export default function Post(props) {
       {posts && siteConfig && (
         <Layout {...siteConfig}>
           <NextSeo
-            title={`Blog — ${siteConfig?.title}`}
+            title={`${siteConfig?.title}`}
             description={siteConfig?.description || ""}
             canonical={siteConfig?.url}
             openGraph={{
               url: siteConfig?.url,
-              title: `Blog — ${siteConfig?.title}`,
+              title: `${siteConfig?.title}`,
               description: siteConfig?.description || "",
               images: [
                 {
@@ -56,16 +69,18 @@ export default function Post(props) {
             }}
           />
           <Container>
-            <h1 className="text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-              Arquivos
-            </h1>
-            <div className="text-center">
-              <p className="mt-2 text-lg">
-                Veja todos os posts que já escrevemos.
-              </p>
+            <div className="grid gap-10 lg:gap-10 md:grid-cols-2 ">
+              {posts.slice(0, 2).map(post => (
+                <PostList
+                  key={post._id}
+                  post={post}
+                  aspect="landscape"
+                  preloadImage={true}
+                />
+              ))}
             </div>
             <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
-              {posts.map(post => (
+              {posts.slice(2).map(post => (
                 <PostList
                   key={post._id}
                   post={post}
@@ -96,3 +111,4 @@ export async function getStaticProps({ params, preview = false }) {
     revalidate: 10
   };
 }
+*/

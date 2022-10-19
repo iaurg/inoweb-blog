@@ -11,7 +11,7 @@ import locale from "date-fns/locale/pt-BR";
 import { NextSeo } from "next-seo";
 import defaultOG from "/public/img/opengraph.jpg";
 
-import { singlequery, configQuery, pathquery } from "@lib/groq";
+import { singlequery, configQuery, pathquery } from "lib/groq";
 import CategoryLabel from "@components/blog/category";
 import AuthorCard from "@components/blog/authorCard";
 

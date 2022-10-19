@@ -1,8 +1,6 @@
 import Container from "@components/container";
 import Layout from "@components/layout";
-import { authorsquery, configQuery } from "@lib/groq";
 
-import GetImage from "@utils/getImage";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,16 +16,15 @@ export default function About({ authors, siteconfig }) {
         </div>
 
         <div className="grid grid-cols-3 gap-5 mt-6 mb-16 md:mt-16 md:mb-32 md:gap-16">
+          {/*
           {authors.slice(0, 3).map(author => {
-            const { width, height, ...imgprops } = GetImage(
-              author?.image
-            );
+            // const { width, height, ...imgprops } = null;
             return (
               <div
                 key={author._id}
                 className="relative overflow-hidden rounded-md aspect-square odd:translate-y-10 odd:md:translate-y-16">
                 <Image
-                  {...imgprops}
+                  src=""
                   alt={author.name || " "}
                   layout="fill"
                   objectFit="cover"
@@ -36,6 +33,7 @@ export default function About({ authors, siteconfig }) {
               </div>
             );
           })}
+          */}
         </div>
 
         <div className="mx-auto prose text-center dark:prose-invert mt-14">
@@ -58,17 +56,4 @@ export default function About({ authors, siteconfig }) {
       </Container>
     </Layout>
   );
-}
-
-export async function getStaticProps({ _, preview = false }) {
-  const authors = await getClient(preview).fetch(authorsquery);
-  const config = await getClient(preview).fetch(configQuery);
-  return {
-    props: {
-      authors: authors,
-      siteconfig: { ...config },
-      preview
-    },
-    revalidate: 100
-  };
 }

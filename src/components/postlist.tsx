@@ -1,19 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cx } from "@utils/all";
-import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
 import locale from "date-fns/locale/pt-BR";
 import { PhotographIcon } from "@heroicons/react/outline";
 import CategoryLabel from "@components/blog/category";
 
 export default function PostList({ post, aspect, preloadImage }) {
-  const imageProps = post?.mainImage
-    ? GetImage(post.mainImage)
-    : null;
-  const AuthorimageProps = post?.author?.image
-    ? GetImage(post.author.image)
-    : null;
+  const imageProps = null;
+  const AuthorimageProps = null;
   return (
     <>
       <div className="cursor-pointer group">
