@@ -26,17 +26,15 @@ export default function Contact({ siteconfig }) {
   const apiKey = siteconfig?.w3ckey || "YOUR_ACCESS_KEY_HERE";
 
   const { submit: onSubmit } = useWeb3Forms({
-    apikey: apiKey,
-    from_name: "inoweb_blog",
-    subject: "Nova mensagem de contato do blog",
+    apikey: "x",
     onSuccess: (msg, data) => {
       setIsSuccess(true);
-      setMessage(msg);
+      setMessage(true);
       reset();
     },
     onError: (msg, data) => {
       setIsSuccess(false);
-      setMessage(msg);
+      setMessage(true);
     }
   });
 

@@ -6,28 +6,18 @@ import Container from "@components/container";
 import { useRouter } from "next/router";
 
 import defaultOG from "../public/img/opengraph.jpg";
-import { postquery, configQuery } from "lib/groq";
-import GetImage from "@utils/getImage";
+
 import PostList from "@components/postlist";
+import { siteConfig } from "@utils/siteConfig";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
 
   const router = useRouter();
 
-  const { data: posts } = usePreviewSubscription(postquery, {
-    initialData: postdata,
-    enabled: preview || router.query.preview !== undefined
-  });
+  const posts = [];
 
-  const { data: siteConfig } = usePreviewSubscription(configQuery, {
-    initialData: siteconfig,
-    enabled: preview || router.query.preview !== undefined
-  });
-
-  const ogimage = siteConfig?.openGraphImage
-    ? GetImage(siteConfig?.openGraphImage).src
-    : defaultOG.src;
+  const ogimage = null;
 
   return (
     <>
@@ -67,9 +57,10 @@ export default function Post(props) {
             <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
               {posts.map(post => (
                 <PostList
-                  key={post._id}
+                  key={post.slug}
                   post={post}
                   aspect="square"
+                  preloadImage={true}
                 />
               ))}
             </div>
@@ -81,8 +72,8 @@ export default function Post(props) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const post = await getClient(preview).fetch(postquery);
-  const config = await getClient(preview).fetch(configQuery);
+  const post = [];
+  const config = [];
 
   // const categories = (await client.fetch(catquery)) || null;
 
