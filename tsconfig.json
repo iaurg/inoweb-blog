@@ -20,7 +20,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@customTypes/*": ["src/types/*"],
+      "@css/*": ["src/css/*"],
       "@layouts/*": ["src/layouts/*"],
+      "@lib/*": ["src/lib/*"],
       "@components/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
       "@public/*": ["./public/*"]
