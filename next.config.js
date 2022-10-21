@@ -1,7 +1,7 @@
 module.exports = {
   images: {
-    domains: ["inoweb.com.br"],
-    loader: "custom"
+    domains: ["inoweb.com.br"]
+    // loader: "custom"
   },
   swcMinify: true,
   experimental: {
