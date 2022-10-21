@@ -43,15 +43,16 @@ export default function PostList({ post, aspect, preloadImage }) {
         </div>
         <CategoryLabel categories={post.categories} />
         <h2 className="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white">
-          <Link href={`/post/${post.slug.current}`}>
+          <Link href={`/post/${post.slug}`}>
             <span
-              className="     bg-gradient-to-r from-green-200 to-green-100 dark:from-purple-800 dark:to-purple-900
-          bg-[length:0px_10px]
-          bg-left-bottom
-          bg-no-repeat
-          transition-[background-size]
-          duration-500
-          hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]">
+              className="
+              bg-gradient-to-r from-green-200 to-green-100 dark:from-blue-800 dark:to-blue-900
+              bg-[length:0px_10px]
+              bg-left-bottom
+              bg-no-repeat
+              transition-[background-size]
+              duration-500
+              hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]">
               {post.title}
             </span>
           </Link>
@@ -70,15 +71,12 @@ export default function PostList({ post, aspect, preloadImage }) {
         <div className="flex items-center mt-3 space-x-3 text-gray-500 dark:text-gray-400">
           <div className="flex items-center gap-3">
             <div className="relative flex-shrink-0 w-5 h-5">
-              {post.author.image && (
+              {post.author.picture && (
                 <Image
-                  src={AuthorimageProps.src}
-                  blurDataURL={AuthorimageProps.blurDataURL}
-                  loader={AuthorimageProps.loader}
+                  src={post.author.picture}
                   objectFit="cover"
                   layout="fill"
                   alt={post?.author?.name}
-                  placeholder="blur"
                   sizes="30px"
                   className="rounded-full"
                 />
@@ -89,14 +87,10 @@ export default function PostList({ post, aspect, preloadImage }) {
           <span className="text-xs text-gray-300 dark:text-gray-600">
             &bull;
           </span>
-          <time
-            className="text-sm"
-            dateTime={post?.publishedAt || post._createdAt}>
-            {format(
-              parseISO(post?.publishedAt || post._createdAt),
-              "dd MMMM, yyyy",
-              { locale }
-            )}
+          <time className="text-sm" dateTime={post?.date}>
+            {format(parseISO(post?.date), "dd MMMM, yyyy", {
+              locale
+            })}
           </time>
         </div>
       </div>

@@ -2,8 +2,15 @@ import { NextSeo } from "next-seo";
 import { siteConfig } from "@utils/siteConfig";
 import Layout from "@components/layout";
 import Container from "@components/container";
+import { getAllPosts } from "@lib/api";
+import Post from "@customTypes/post";
+import PostList from "@components/postlist";
 
-export default function Index() {
+type Props = {
+  allPosts: Post[];
+};
+
+export default function Index({ allPosts }: Props) {
   return (
     <Layout>
       <NextSeo
@@ -30,30 +37,41 @@ export default function Index() {
       />
       <Container>
         <div className="grid gap-10 lg:gap-10 md:grid-cols-2 ">
-          oi
-          {/*
-          <div className="grid gap-10 lg:gap-10 md:grid-cols-2 ">
-              {posts.slice(0, 2).map(post => (
-                <PostList
-                  key={post._id}
-                  post={post}
-                  aspect="landscape"
-                  preloadImage={true}
-                />
-              ))}
-            </div>
-            <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
-              {posts.slice(2).map(post => (
-                <PostList
-                  key={post._id}
-                  post={post}
-                  aspect="square"
-                />
-              ))}
-            </div>
-           */}
+          {allPosts.slice(0, 2).map(post => (
+            <PostList
+              key={post.slug}
+              post={post}
+              aspect="landscape"
+              preloadImage={true}
+            />
+          ))}
+        </div>
+        <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
+          {allPosts.slice(2).map(post => (
+            <PostList
+              key={post.slug}
+              post={post}
+              aspect="square"
+              preloadImage={true}
+            />
+          ))}
         </div>
       </Container>
     </Layout>
   );
 }
+
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "coverImage",
+    "excerpt"
+  ]);
+
+  return {
+    props: { allPosts }
+  };
+};

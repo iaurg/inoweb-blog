@@ -7,7 +7,7 @@ export default function CategoryLabel({ categories }) {
       {categories?.length &&
         categories.slice(0).map((category, index) => (
           <Link
-            href={`/category/${category.slug.current}`}
+            href={`/categoria/${category.slug.current}`}
             key={index}>
             <a>
               <Label color={category.color}>{category.title}</Label>

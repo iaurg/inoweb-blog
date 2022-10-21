@@ -5,48 +5,36 @@ import Container from "@components/container";
 import { useRouter } from "next/router";
 
 import ErrorPage from "next/error";
-import GetImage from "@utils/getImage";
 import { parseISO, format } from "date-fns";
 import locale from "date-fns/locale/pt-BR";
 import { NextSeo } from "next-seo";
-import defaultOG from "/public/img/opengraph.jpg";
+// import defaultOG from "/public/img/opengraph.jpg";
 
-import { singlequery, configQuery, pathquery } from "lib/groq";
 import CategoryLabel from "@components/blog/category";
 import AuthorCard from "@components/blog/authorCard";
+import { getAllPosts, getPostBySlug } from "@lib/api";
+import PostType from "@customTypes/post";
+import { siteConfig } from "@utils/siteConfig";
+import markdownToHtml from "@lib/markdownToHtml";
+import PostBody from "@components/post/postBody";
 
-export default function Post(props) {
-  const { postdata, siteconfig, preview } = props;
+type Props = {
+  post: PostType;
+  morePosts: PostType[];
+  preview?: boolean;
+};
 
+export default function Post({ post, morePosts, preview }: Props) {
   const router = useRouter();
-  const { slug } = router.query;
-
-  const { data: post } = usePreviewSubscription(singlequery, {
-    params: { slug: slug },
-    initialData: postdata,
-    enabled: preview || router.query.preview !== undefined
-  });
-
-  const { data: siteConfig } = usePreviewSubscription(configQuery, {
-    initialData: siteconfig,
-    enabled: preview || router.query.preview !== undefined
-  });
-
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
 
-  const imageProps = post?.mainImage
-    ? GetImage(post?.mainImage)
-    : null;
+  const imageProps = null;
 
-  const AuthorimageProps = post?.author?.image
-    ? GetImage(post.author.image)
-    : null;
+  const AuthorimageProps = null;
 
-  const ogimage = siteConfig?.openGraphImage
-    ? GetImage(siteConfig?.openGraphImage).src
-    : defaultOG.src;
+  const ogimage = null;
 
   return (
     <>
@@ -55,14 +43,14 @@ export default function Post(props) {
           <NextSeo
             title={`${post.title} - ${siteConfig.title}`}
             description={post.excerpt || ""}
-            canonical={`${siteConfig?.url}/post/${post.slug.current}`}
+            canonical={`${siteConfig?.url}/post/${post.slug}`}
             openGraph={{
-              url: `${siteConfig?.url}/post/${post.slug.current}`,
+              url: `${siteConfig?.url}/post/${post.slug}`,
               title: `${post.title} - ${siteConfig.title}`,
               description: post.excerpt || "",
               images: [
                 {
-                  url: GetImage(post?.mainImage).src || ogimage,
+                  url: "",
                   width: 800,
                   height: 600,
                   alt: ""
@@ -74,24 +62,6 @@ export default function Post(props) {
               cardType: "summary_large_image"
             }}
           />
-          {/*
-          <div className="relative bg-white/20">
-            <div className="absolute w-full h-full -z-10">
-              {post?.mainImage && (
-                <Image
-                  {...GetImage(post.mainImage)}
-                  alt={post.mainImage?.alt || "Thumbnail"}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              )}
-            </div>
-            <Container className="py-48">
-              <h1 className="relative max-w-3xl mx-auto mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl after:absolute after:w-full after:h-full after:bg-white after:inset-0 after:-z-10 after:blur-2xl after:scale-150">
-                {post.title}
-              </h1>
-            </Container>
-          </div> */}
 
           <Container className="!pt-0">
             <div className="max-w-screen-md mx-auto ">
@@ -106,15 +76,13 @@ export default function Post(props) {
               <div className="flex justify-center mt-3 space-x-3 text-gray-500 ">
                 <div className="flex items-center gap-3">
                   <div className="relative flex-shrink-0 w-10 h-10">
-                    {AuthorimageProps && (
+                    {post.author.picture && (
                       <Image
-                        src={AuthorimageProps.src}
-                        blurDataURL={AuthorimageProps.blurDataURL}
-                        loader={AuthorimageProps.loader}
+                        src={post.author.picture}
                         objectFit="cover"
-                        alt={post?.author?.name}
-                        placeholder="blur"
                         layout="fill"
+                        alt={post?.author?.name}
+                        sizes="80px"
                         className="rounded-full"
                       />
                     )}
@@ -126,13 +94,9 @@ export default function Post(props) {
                     <div className="flex items-center space-x-2 text-sm">
                       <time
                         className="text-gray-500 dark:text-gray-400"
-                        dateTime={
-                          post?.publishedAt || post._createdAt
-                        }>
+                        dateTime={post?.date}>
                         {format(
-                          parseISO(
-                            post?.publishedAt || post._createdAt
-                          ),
+                          parseISO(post?.date),
                           "dd MMMM, yyyy",
                           { locale }
                         )}
@@ -153,7 +117,7 @@ export default function Post(props) {
                 src={imageProps.src}
                 loader={imageProps.loader}
                 blurDataURL={imageProps.blurDataURL}
-                alt={post.mainImage?.alt || "Thumbnail"}
+                alt={post.title || "Thumbnail"}
                 placeholder="blur"
                 layout="fill"
                 loading="eager"
@@ -166,7 +130,7 @@ export default function Post(props) {
           <Container>
             <article className="max-w-screen-md mx-auto ">
               <div className="mx-auto my-3 prose prose-base dark:prose-invert prose-a:text-blue-500">
-                {post.body && <PortableText value={post.body} />}
+                <PostBody content={post.content} />
               </div>
               <div className="flex justify-center mt-7 mb-7">
                 <Link href="/">
@@ -187,7 +151,7 @@ export default function Post(props) {
 const MainImage = ({ image }) => {
   return (
     <div className="mt-12 mb-12 ">
-      <Image {...GetImage(image)} alt={image.alt || "Thumbnail"} />
+      <Image src="" alt={image.alt || "Thumbnail"} />
       <figcaption className="text-center ">
         {image.caption && (
           <span className="text-sm italic text-gray-600 dark:text-gray-400">
@@ -199,33 +163,46 @@ const MainImage = ({ image }) => {
   );
 };
 
-export async function getStaticProps({ params, preview = false }) {
-  //console.log(params);
-  const post = await getClient(preview).fetch(singlequery, {
-    slug: params.slug
-  });
+type Params = {
+  params: {
+    slug: string;
+  };
+};
 
-  const config = await getClient(preview).fetch(configQuery);
+export async function getStaticProps({ params }: Params) {
+  const post = getPostBySlug(params.slug, [
+    "title",
+    "date",
+    "slug",
+    "author",
+    "content",
+    "ogImage",
+    "coverImage"
+  ]);
+
+  const content = await markdownToHtml(post.content || "");
 
   return {
     props: {
-      postdata: { ...post },
-      siteconfig: { ...config },
-      preview
-    },
-    revalidate: 10
+      post: {
+        ...post,
+        content
+      }
+    }
   };
 }
 
 export async function getStaticPaths() {
-  const allPosts = await client.fetch(pathquery);
+  const posts = getAllPosts(["slug"]);
+
   return {
-    paths:
-      allPosts?.map(page => ({
+    paths: posts.map(post => {
+      return {
         params: {
-          slug: page.slug
+          slug: post.slug
         }
-      })) || [],
-    fallback: true
+      };
+    }),
+    fallback: false
   };
 }
