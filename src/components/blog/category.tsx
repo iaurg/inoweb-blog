@@ -1,19 +1,18 @@
 import Link from "next/link";
 import Label from "@components/ui/label";
+import slugify from "slugify";
 
-export default function CategoryLabel({ categories }) {
+export default function CategoryLabel({ category }) {
   return (
     <div>
-      {categories?.length &&
-        categories.slice(0).map((category, index) => (
-          <Link
-            href={`/categoria/${category.slug.current}`}
-            key={index}>
-            <a>
-              <Label color={category.color}>{category.title}</Label>
-            </a>
-          </Link>
-        ))}
+      {category && (
+        <Link
+          href={`/categoria/${slugify(category, { lower: true })}`}>
+          <a>
+            <Label color={category}>{category}</Label>
+          </a>
+        </Link>
+      )}
     </div>
   );
 }

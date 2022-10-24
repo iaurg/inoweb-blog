@@ -3,12 +3,9 @@ import Link from "next/link";
 import { cx } from "@utils/all";
 import { parseISO, format } from "date-fns";
 import locale from "date-fns/locale/pt-BR";
-import { PhotographIcon } from "@heroicons/react/outline";
 import CategoryLabel from "@components/blog/category";
 
-export default function PostList({ post, aspect, preloadImage }) {
-  const imageProps = null;
-  const AuthorimageProps = null;
+export default function PostList({ post, aspect }) {
   return (
     <>
       <div className="cursor-pointer group">
@@ -17,33 +14,19 @@ export default function PostList({ post, aspect, preloadImage }) {
             "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800   hover:scale-105",
             aspect === "landscape" ? "aspect-video" : "aspect-square"
           )}>
-          <Link href={`/post/${post.slug.current}`}>
+          <Link href={`/${post.category}/${post.slug}`}>
             <a>
-              {imageProps ? (
-                <Image
-                  src={imageProps.src}
-                  loader={imageProps.loader}
-                  blurDataURL={imageProps.blurDataURL}
-                  alt={post.mainImage.alt || "Thumbnail"}
-                  placeholder="blur"
-                  sizes="80vw"
-                  //sizes="(max-width: 640px) 90vw, 480px"
-                  layout="fill"
-                  objectFit="cover"
-                  priority={preloadImage ? true : false}
-                  className="transition-all"
-                />
-              ) : (
-                <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                  <PhotographIcon />
-                </span>
-              )}
+              <Image
+                src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/thumbnail?title=${post.title}`}
+                alt={post.title || "Thumbnail"}
+                layout="fill"
+              />
             </a>
           </Link>
         </div>
-        <CategoryLabel categories={post.categories} />
+        <CategoryLabel category={post.category} />
         <h2 className="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white">
-          <Link href={`/post/${post.slug}`}>
+          <Link href={`/${post.category}/${post.slug}`}>
             <span
               className="
               bg-gradient-to-r from-green-200 to-green-100 dark:from-blue-800 dark:to-blue-900

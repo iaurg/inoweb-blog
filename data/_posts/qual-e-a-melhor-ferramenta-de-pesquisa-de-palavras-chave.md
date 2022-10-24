@@ -2,14 +2,12 @@
 title: "Qual é a melhor ferramenta de pesquisa de palavras-chave?"
 seoTitle: SEO title
 seoDescription: SEO description
-coverImage: "/assets/blog/hello-world/cover.jpg"
 date: "2020-03-16T05:35:07.322Z"
 author:
-  name: Richard Schott
-  picture: "/img/authors/segredo_dev.png"
-ogImage:
-  url: "/assets/blog/hello-world/cover.jpg"
-categories: tutorial
+  name: Italo A.
+  picture: "/img/authors/italo.jpeg"
+category: seo
+tags: seo, nextjs
 ---
 
 Se você está procurando ferramentas para realizar **pesquisas de palavras-chave** e assim potencializar o desempenho de sua marca, você está no lugar certo.

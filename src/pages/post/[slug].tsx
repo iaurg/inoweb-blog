@@ -8,7 +8,6 @@ import ErrorPage from "next/error";
 import { parseISO, format } from "date-fns";
 import locale from "date-fns/locale/pt-BR";
 import { NextSeo } from "next-seo";
-// import defaultOG from "/public/img/opengraph.jpg";
 
 import CategoryLabel from "@components/blog/category";
 import AuthorCard from "@components/blog/authorCard";
@@ -112,21 +111,13 @@ export default function Post({ post, morePosts, preview }: Props) {
           </Container>
 
           <div className="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
-            {imageProps && (
-              <Image
-                src={imageProps.src}
-                loader={imageProps.loader}
-                blurDataURL={imageProps.blurDataURL}
-                alt={post.title || "Thumbnail"}
-                placeholder="blur"
-                layout="fill"
-                loading="eager"
-                objectFit="cover"
-              />
-            )}
+            <Image
+              src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/og?title=${post.title}`}
+              alt={post.title || "Thumbnail"}
+              layout="fill"
+            />
           </div>
 
-          {/* {post?.mainImage && <MainImage image={post.mainImage} />} */}
           <Container>
             <article className="max-w-screen-md mx-auto ">
               <div className="mx-auto my-3 prose prose-base dark:prose-invert prose-a:text-blue-500">

@@ -3,25 +3,20 @@ import Layout from "@components/layout";
 import Container from "@components/container";
 // import Subpagehero from "@components/sections/subpagehero";
 // import Categories from "@components/categories";
-import { useRouter } from "next/router";
-
-import defaultOG from "../public/img/opengraph.jpg";
 
 import PostList from "@components/postlist";
 import { siteConfig } from "@utils/siteConfig";
+import { getAllPosts } from "@lib/api";
+import PostType from "@customTypes/post";
 
-export default function Post(props) {
-  const { postdata, siteconfig, preview } = props;
+type Props = {
+  allPosts: PostType[];
+};
 
-  const router = useRouter();
-
-  const posts = [];
-
-  const ogimage = null;
-
+export default function Post({ allPosts }: Props) {
   return (
     <>
-      {posts && siteConfig && (
+      {allPosts && siteConfig && (
         <Layout {...siteConfig}>
           <NextSeo
             title={`Blog — ${siteConfig?.title}`}
@@ -33,7 +28,7 @@ export default function Post(props) {
               description: siteConfig?.description || "",
               images: [
                 {
-                  url: ogimage,
+                  url: siteConfig.ogImage,
                   width: 800,
                   height: 600,
                   alt: ""
@@ -55,7 +50,7 @@ export default function Post(props) {
               </p>
             </div>
             <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
-              {posts.map(post => (
+              {allPosts.map(post => (
                 <PostList
                   key={post.slug}
                   post={post}
@@ -71,19 +66,17 @@ export default function Post(props) {
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const post = [];
-  const config = [];
-
-  // const categories = (await client.fetch(catquery)) || null;
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "coverImage",
+    "excerpt"
+  ]);
 
   return {
-    props: {
-      postdata: post,
-      // categories: categories,
-      siteconfig: { ...config },
-      preview
-    },
-    revalidate: 10
+    props: { allPosts }
   };
-}
+};

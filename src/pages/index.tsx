@@ -42,18 +42,12 @@ export default function Index({ allPosts }: Props) {
               key={post.slug}
               post={post}
               aspect="landscape"
-              preloadImage={true}
             />
           ))}
         </div>
         <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
           {allPosts.slice(2).map(post => (
-            <PostList
-              key={post.slug}
-              post={post}
-              aspect="square"
-              preloadImage={true}
-            />
+            <PostList key={post.slug} post={post} aspect="square" />
           ))}
         </div>
       </Container>
@@ -68,8 +62,12 @@ export const getStaticProps = async () => {
     "slug",
     "author",
     "coverImage",
-    "excerpt"
+    "excerpt",
+    "category",
+    "tags"
   ]);
+
+  console.log(allPosts);
 
   return {
     props: { allPosts }

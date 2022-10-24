@@ -1,8 +1,9 @@
 export const siteConfig = {
-  title: "My Blog",
-  siteName: "My Blog",
-  description: "My blog description",
-  siteUrl: "https://myblog.com",
-  url: "https://myblog.com",
+  title: "Blog - inoweb",
+  siteName: "Blog - inoweb",
+  description:
+    "Gerencie seu negócio de forma profissional. Vamos além da criação de sites.",
+  siteUrl: "https://inoweb.com.br",
+  url: "https://inoweb.com.br",
   ogImage: "/img/opengraph.jpg"
 };
