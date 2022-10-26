@@ -55,7 +55,6 @@ export default function Post({ allPosts }: Props) {
                   key={post.slug}
                   post={post}
                   aspect="square"
-                  preloadImage={true}
                 />
               ))}
             </div>
