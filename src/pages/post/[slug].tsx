@@ -111,10 +111,9 @@ export default function Post({ post, morePosts, preview }: Props) {
           </Container>
 
           <div className="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
-            <Image
+            <img
               src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/og?title=${post.title}`}
               alt={post.title || "Thumbnail"}
-              layout="fill"
             />
           </div>
 

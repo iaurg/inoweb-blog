@@ -1,9 +1,6 @@
 import { NextSeo } from "next-seo";
 import Layout from "@components/layout";
 import Container from "@components/container";
-// import Subpagehero from "@components/sections/subpagehero";
-// import Categories from "@components/categories";
-
 import PostList from "@components/postlist";
 import { siteConfig } from "@utils/siteConfig";
 import { getAllPosts } from "@lib/api";
