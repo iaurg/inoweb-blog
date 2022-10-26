@@ -65,7 +65,7 @@ export default function Post({ post, morePosts, preview }: Props) {
           <Container className="!pt-0">
             <div className="max-w-screen-md mx-auto ">
               <div className="text-center">
-                <CategoryLabel categories={post.categories} />
+                <CategoryLabel category={post.categories} />
               </div>
 
               <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
