@@ -7,5 +7,13 @@ module.exports = {
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/:category/:slug",
+        destination: "/post/:slug"
+      }
+    ];
   }
 };
