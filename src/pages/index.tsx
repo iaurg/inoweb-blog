@@ -67,8 +67,6 @@ export const getStaticProps = async () => {
     "tags"
   ]);
 
-  console.log(allPosts);
-
   return {
     props: { allPosts }
   };
