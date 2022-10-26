@@ -18,6 +18,10 @@ module.exports = {
       {
         source: "/:category/:slug",
         destination: "/post/:slug"
+      },
+      {
+        source: "/:category",
+        destination: "/categoria/:category"
       }
     ];
   }
