@@ -3,6 +3,7 @@ import { Disclosure } from "@headlessui/react";
 import Container from "@components/container";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 type MenuItem = {
   label: string;
@@ -18,22 +19,18 @@ export default function Navbar(props) {
     },
     {
       label: "Sobre",
-      href: "/sobre"
+      href: "https://inoweb.com.br"
     },
     {
       label: "Contato",
-      href: "/contato"
+      href: "https://inoweb.com.br/contato"
     }
   ];
 
   const rightmenu: MenuItem[] = [
     {
-      label: "Archive",
-      href: "/archive"
-    },
-    {
       label: "Github",
-      href: "https://github.com/segredo-dev",
+      href: "https://github.com/inoweb",
       external: true
     },
     {
@@ -44,6 +41,7 @@ export default function Navbar(props) {
   ];
 
   const mobilemenu = [...leftmenu, ...rightmenu];
+  const { theme } = useTheme();
 
   return (
     <Container>
@@ -62,38 +60,31 @@ export default function Navbar(props) {
                   ))}
                 </div>
                 <div className="flex justify-between items-center w-full md:w-auto">
-                  <Link href="/">
-                    <a className="w-28 dark:hidden">
-                      {props.logo ? (
+                  {theme == "light" ? (
+                    <Link href="/">
+                      <a>
                         <Image
-                          src=""
+                          src="/img/logo-inoweb.png"
                           alt="Logo"
-                          sizes="(max-width: 640px) 100vw, 200px"
+                          width={45}
+                          height={45}
                           priority={true}
                         />
-                      ) : (
-                        <span className="block text-center">
-                          inoweb
-                        </span>
-                      )}
-                    </a>
-                  </Link>
-                  <Link href="/">
-                    <a className="hidden w-28 dark:block">
-                      {props.logoalt ? (
+                      </a>
+                    </Link>
+                  ) : (
+                    <Link href="/">
+                      <a>
                         <Image
-                          src=""
+                          src="/img/logo-inoweb-white.png"
                           alt="Logo"
-                          sizes="(max-width: 640px) 100vw, 200px"
+                          width={45}
+                          height={45}
                           priority={true}
                         />
-                      ) : (
-                        <span className="block text-center">
-                          inoweb
-                        </span>
-                      )}
-                    </a>
-                  </Link>
+                      </a>
+                    </Link>
+                  )}
                   <Disclosure.Button
                     aria-label="Toggle Menu"
                     className="px-2 py-1 ml-auto text-gray-500 rounded-md md:hidden focus:text-blue-500 focus:outline-none dark:text-gray-300 ">
