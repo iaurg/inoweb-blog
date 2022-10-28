@@ -1,33 +1,30 @@
 import React from "react";
 import { NextSeo } from "next-seo";
 import Navbar from "@components/navbar";
-// import defaultOG from "../public/img/og-default.jpg";
-
 import Footer from "@components/footer";
-// import PopupWidget from "../components/popupWidget";
+import { siteConfig } from "@utils/siteConfig";
 
-export default function Layout(props) {
-  const { children } = props;
+export default function Layout({ children }) {
   const ogimage = "";
   return (
     <>
       <NextSeo
-        title={props.title}
-        description={props.description}
-        canonical={props.url}
+        title={siteConfig.title}
+        description={siteConfig.description}
+        canonical={siteConfig.url}
         openGraph={{
-          url: props.url,
-          title: props.title,
-          description: props.description,
+          url: siteConfig.url,
+          title: siteConfig.title,
+          description: siteConfig.description,
           images: [
             {
               url: ogimage,
               width: 800,
               height: 600,
-              alt: props.title
+              alt: siteConfig.title
             }
           ],
-          site_name: props.title
+          site_name: siteConfig.title
         }}
         twitter={{
           handle: "@surjithctly",
@@ -37,10 +34,9 @@ export default function Layout(props) {
       />
 
       <div className="antialiased text-gray-800 dark:bg-black dark:text-gray-400">
-        <Navbar {...props} />
+        <Navbar />
         <div>{children}</div>
-
-        <Footer {...props} />
+        <Footer />
       </div>
     </>
   );
