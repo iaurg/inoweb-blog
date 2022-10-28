@@ -18,24 +18,24 @@ export default function Navbar(props) {
       href: "/"
     },
     {
-      label: "Sobre",
-      href: "https://inoweb.com.br"
+      label: "WordPress",
+      href: "/wordpress"
     },
     {
-      label: "Contato",
-      href: "https://inoweb.com.br/contato"
+      label: "SEO",
+      href: "/seo"
     }
   ];
 
   const rightmenu: MenuItem[] = [
     {
-      label: "Github",
-      href: "https://github.com/inoweb",
+      label: "Programação",
+      href: "/programacao",
       external: true
     },
     {
-      label: "Download",
-      href: "https://github.com/segredo-dev",
+      label: "Contato",
+      href: "/contato",
       external: true
     }
   ];
