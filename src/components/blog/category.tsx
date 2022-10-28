@@ -6,8 +6,7 @@ export default function CategoryLabel({ category }) {
   return (
     <div>
       {category && (
-        <Link
-          href={`/categoria/${slugify(category, { lower: true })}`}>
+        <Link href={`/${slugify(category, { lower: true })}`}>
           <a>
             <Label color={category}>{category}</Label>
           </a>

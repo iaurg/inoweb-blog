@@ -20,8 +20,8 @@ module.exports = {
         destination: "/post/:slug"
       },
       {
-        source: "/:category",
-        destination: "/categoria/:category"
+        source: "/:slug",
+        destination: "/categoria/:slug"
       }
     ];
   }
