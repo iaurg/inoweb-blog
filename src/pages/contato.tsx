@@ -13,9 +13,6 @@ export default function Contact({ siteconfig }) {
     register,
     handleSubmit,
     reset,
-    watch,
-    control,
-    setValue,
     formState: { errors, isSubmitSuccessful, isSubmitting }
   } = useForm({
     mode: "onTouched"
@@ -23,16 +20,14 @@ export default function Contact({ siteconfig }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState(false);
 
-  const apiKey = siteconfig?.w3ckey || "YOUR_ACCESS_KEY_HERE";
-
   const { submit: onSubmit } = useWeb3Forms({
     apikey: "x",
-    onSuccess: (msg, data) => {
+    onSuccess: () => {
       setIsSuccess(true);
       setMessage(true);
       reset();
     },
-    onError: (msg, data) => {
+    onError: () => {
       setIsSuccess(false);
       setMessage(true);
     }
