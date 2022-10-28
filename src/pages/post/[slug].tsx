@@ -4,7 +4,6 @@ import Layout from "@components/layout";
 import Container from "@components/container";
 import { useRouter } from "next/router";
 
-import ErrorPage from "next/error";
 import { parseISO, format } from "date-fns";
 import locale from "date-fns/locale/pt-BR";
 import { NextSeo } from "next-seo";
@@ -16,24 +15,17 @@ import PostType from "@customTypes/post";
 import { siteConfig } from "@utils/siteConfig";
 import markdownToHtml from "@lib/markdownToHtml";
 import PostBody from "@components/post/postBody";
+import FourOhFour from "@pages/404";
 
 type Props = {
   post: PostType;
-  morePosts: PostType[];
-  preview?: boolean;
 };
 
-export default function Post({ post, morePosts, preview }: Props) {
+export default function Post({ post }: Props) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
+    return <FourOhFour />;
   }
-
-  const imageProps = null;
-
-  const AuthorimageProps = null;
-
-  const ogimage = null;
 
   return (
     <>
@@ -138,21 +130,6 @@ export default function Post({ post, morePosts, preview }: Props) {
   );
 }
 
-const MainImage = ({ image }) => {
-  return (
-    <div className="mt-12 mb-12 ">
-      <Image src="" alt={image.alt || "Thumbnail"} />
-      <figcaption className="text-center ">
-        {image.caption && (
-          <span className="text-sm italic text-gray-600 dark:text-gray-400">
-            {image.caption}
-          </span>
-        )}
-      </figcaption>
-    </div>
-  );
-};
-
 type Params = {
   params: {
     slug: string;
@@ -167,7 +144,8 @@ export async function getStaticProps({ params }: Params) {
     "author",
     "content",
     "ogImage",
-    "coverImage"
+    "coverImage",
+    "category"
   ]);
 
   const content = await markdownToHtml(post.content || "");
