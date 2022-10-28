@@ -10,7 +10,7 @@ type PostType = {
   ogImage: {
     url: string;
   };
-  categories: string[];
+  category: string;
   estReadingTime: string;
   content: string;
 };
