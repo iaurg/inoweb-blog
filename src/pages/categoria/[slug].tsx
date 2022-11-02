@@ -29,7 +29,11 @@ export default function Category({ posts }: Props) {
         </div>
         <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
           {posts.slice(2).map(post => (
-            <PostList key={post.slug} post={post} aspect="square" />
+            <PostList
+              key={post.slug}
+              post={post}
+              aspect="landscape"
+            />
           ))}
         </div>
       </Container>
