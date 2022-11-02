@@ -7,6 +7,14 @@ export const config = {
   runtime: "experimental-edge"
 };
 
+const categoryEmoji = {
+  wordpress: "🔧",
+  seo: "🔎",
+  programacao: "👨‍💻",
+  marketing: "📈",
+  default: "📝"
+};
+
 export default function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
@@ -16,6 +24,12 @@ export default function handler(req: NextRequest) {
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "inoweb blog";
+
+    // ?category=<category>
+    const hasCategory = searchParams.has("category");
+    const category = hasCategory
+      ? searchParams.get("category").toLowerCase()
+      : "default";
 
     return new ImageResponse(
       (
@@ -35,30 +49,57 @@ export default function handler(req: NextRequest) {
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              justifyItems: "center"
-            }}>
-            <img
-              alt="Vercel"
-              height={200}
-              src="data:image/svg+xml,%3Csvg width='116' height='100' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M57.5 0L115 100H0L57.5 0z' /%3E%3C/svg%3E"
-              style={{ margin: "0 30px" }}
-              width={232}
-            />
-          </div>
-          <div
-            style={{
-              fontSize: 60,
-              fontStyle: "normal",
-              letterSpacing: "-0.025em",
+              fontSize: 40,
               color: "white",
-              marginTop: 30,
-              padding: "0 120px",
-              lineHeight: 1.4,
-              whiteSpace: "pre-wrap"
+              background: "black",
+              width: "100%",
+              height: "100%",
+              textAlign: "center",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column"
             }}>
-            {title}
+            <div
+              style={{
+                letterSpacing: "-0.025em",
+                color: "white",
+                padding: "30px 120px",
+                lineHeight: 1.4,
+                whiteSpace: "pre-wrap",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+              }}>
+              <span
+                style={{
+                  fontSize: 62,
+                  marginBottom: 16
+                }}>
+                {categoryEmoji[category]}
+              </span>
+              <span
+                style={{
+                  fontSize: 32,
+                  height: 78,
+                  verticalAlign: "middle",
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  justifyContent: "center"
+                }}>
+                {title}
+              </span>
+              <span
+                style={{
+                  fontSize: 20,
+                  textTransform: "uppercase",
+                  marginTop: "46px",
+                  color: "#db2777"
+                }}>
+                {category}
+              </span>
+            </div>
           </div>
         </div>
       ),

@@ -17,7 +17,7 @@ export default function PostList({ post, aspect }) {
           <Link href={`/${post.category}/${post.slug}`}>
             <a>
               <img
-                src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/thumbnail?title=${post.title}`}
+                src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/thumbnail?title=${post.title}&category=${post.category}`}
                 alt={post.title || "Thumbnail"}
               />
             </a>

@@ -164,7 +164,7 @@ export default function Post({ post }: Props) {
 
           <div className="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
             <img
-              src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/og?title=${post.title}`}
+              src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/og?title=${post.title}&category=${post.category}`}
               alt={post.title || "Thumbnail"}
             />
           </div>
