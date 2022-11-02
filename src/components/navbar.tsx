@@ -30,8 +30,11 @@ export default function Navbar(props) {
   const rightmenu: MenuItem[] = [
     {
       label: "Programação",
-      href: "/programacao",
-      external: true
+      href: "/programacao"
+    },
+    {
+      label: "Marketing",
+      href: "/marketing"
     },
     {
       label: "Contato",
@@ -68,7 +71,6 @@ export default function Navbar(props) {
                           alt="Logo"
                           width={45}
                           height={45}
-                          priority={true}
                         />
                       </a>
                     </Link>
@@ -80,7 +82,6 @@ export default function Navbar(props) {
                           alt="Logo"
                           width={45}
                           height={45}
-                          priority={true}
                         />
                       </a>
                     </Link>
