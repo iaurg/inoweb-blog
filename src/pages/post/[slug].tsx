@@ -100,7 +100,7 @@ export default function Post({ post }: Props) {
               description: post.excerpt || "",
               images: [
                 {
-                  url: `${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/og?title=${post.title}`,
+                  url: `${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/og?title=${post.title}&category=${post.category}&author=${post.author.name}`,
                   width: 800,
                   height: 600,
                   alt: `${post.title} - ${siteConfig.title}`
@@ -162,8 +162,9 @@ export default function Post({ post }: Props) {
             </div>
           </Container>
 
-          <div className="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
+          <div className="relative z-0 max-w-screen-md mx-auto lg:rounded-lg aspect-video">
             <img
+              className="object-cover w-full h-full rounded-lg"
               src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}/api/og?title=${post.title}&category=${post.category}`}
               alt={post.title || "Thumbnail"}
             />
