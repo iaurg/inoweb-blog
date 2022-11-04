@@ -24,5 +24,6 @@ module.exports = {
         destination: "/categoria/:slug"
       }
     ];
-  }
+  },
+  basePath: "/blog"
 };
