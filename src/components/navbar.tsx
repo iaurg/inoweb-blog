@@ -63,11 +63,11 @@ export default function Navbar(props) {
                   ))}
                 </div>
                 <div className="flex justify-between items-center w-full md:w-auto">
-                  {theme == "light" ? (
+                {theme == "light" ? (
                     <Link href="/">
                       <a>
-                        <Image
-                          src="/img/logo-inoweb.png"
+                        <img
+                          src="blog/img/logo-inoweb.png"
                           alt="Logo"
                           width={45}
                           height={45}
@@ -77,8 +77,8 @@ export default function Navbar(props) {
                   ) : (
                     <Link href="/">
                       <a>
-                        <Image
-                          src="/img/logo-inoweb.png"
+                        <img
+                          src="blog/img/logo-inoweb-white.png"
                           alt="Logo"
                           width={45}
                           height={45}
