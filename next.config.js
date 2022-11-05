@@ -5,7 +5,8 @@ module.exports = {
       "localhost",
       "vercel.app",
       "https://inoweb-blog.vercel.app"
-    ]
+    ],
+    path: '/_next/image'
     // loader: "custom"
   },
   swcMinify: true,
