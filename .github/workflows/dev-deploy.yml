@@ -1,0 +1,22 @@
+name: Build & Deploy - main
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Inoweb Blog App
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          port: ${{secrets.SSH_PORT}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{ secrets.SSH_USERNAME }}
+     
+          script: |
+            source /home/inoweb0/nodevenv/inoweb-blog/16/bin/activate && cd /home/inoweb0/inoweb-blog
+            eval `ssh-agent -s`; ssh-add ~/.ssh/inowebblog; git pull origin main
+            yarn
+            yarn build
