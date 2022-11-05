@@ -78,7 +78,7 @@ export default function Navbar(props) {
                     <Link href="/">
                       <a>
                         <Image
-                          src="/img/logo-inoweb-white.png"
+                          src="/img/logo-inoweb.png"
                           alt="Logo"
                           width={45}
                           height={45}
