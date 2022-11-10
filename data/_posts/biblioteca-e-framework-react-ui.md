@@ -6,7 +6,7 @@ seoDescription: O React torna-se cada dia mais popular graças a sua facilidade 
 date: "2019-04-29T16:27:01.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: programacao
 tags: programacao, react, ui
 ---

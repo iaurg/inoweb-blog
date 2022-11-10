@@ -6,7 +6,7 @@ seoDescription: Entenda como funciona um site responsivo e como ele pode aumenta
 date: "2019-01-21T19:22:00.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: marketing
 tags: dicas, criação site, site
 ---

@@ -6,7 +6,7 @@ seoDescription: Investir no posicionamento da sua empresa nos buscadores é para
 date: "2019-02-18T16:57:00.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: marketing
 tags: dicas, google ads, seo
 ---

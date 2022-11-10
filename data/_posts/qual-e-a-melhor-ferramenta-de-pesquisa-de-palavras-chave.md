@@ -6,7 +6,7 @@ seoDescription: Está planejando uma estratégia de conteúdo mas não sabe por 
 date: "2020-03-16T05:35:07.322Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: seo
 tags: seo, ferramenta
 ---

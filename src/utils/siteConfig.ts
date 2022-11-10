@@ -5,5 +5,5 @@ export const siteConfig = {
     "Gerencie seu negócio de forma profissional. Vamos além da criação de sites.",
   siteUrl: "https://inoweb.com.br",
   url: "https://inoweb.com.br",
-  ogImage: "/img/opengraph.jpg"
+  ogImage: "/images/opengraph.jpg"
 };

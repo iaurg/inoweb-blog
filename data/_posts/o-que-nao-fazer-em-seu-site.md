@@ -6,7 +6,7 @@ seoDescription: Quando surge a necessidade de criar um site é comum que todos p
 date: "2019-02-11T19:13:06.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: marketing
 tags: dicas, site
 ---

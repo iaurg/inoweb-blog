@@ -6,7 +6,7 @@ seoDescription: Entenda como incorporar vídeos do Vímeo dentro do seu site e c
 date: "2019-04-17T15:54:53.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: marketing
 tags: site, tutorial
 ---

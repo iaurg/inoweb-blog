@@ -6,7 +6,7 @@ seoDescription: Fortalecer a presença de sua empresa no mercado digital com um 
 date: "2019-04-15T18:32:16.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: marketing
 tags: plataformas, tutorial
 ---

@@ -1,12 +1,9 @@
 module.exports = {
   images: {
     domains: [
-      "inoweb.com.br",
       "localhost",
-      "vercel.app",
-      "https://inoweb-blog.vercel.app"
-    ],
-    path: '/_next/image'
+      "localhost:3000"
+    ]
     // loader: "custom"
   },
   swcMinify: true,

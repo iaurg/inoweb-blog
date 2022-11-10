@@ -6,7 +6,7 @@ seoDescription: Ser um bom programador e possuir as habilidades essenciais vai a
 date: "2019-04-09T13:23:00.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: programacao
 tags: dicas
 ---

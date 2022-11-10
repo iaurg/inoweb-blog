@@ -6,7 +6,7 @@ seoDescription: Estar presente no meio digital hoje em dia é indispensável, su
 date: "2019-05-21T16:57:45.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: programacao
 tags: site, performance
 ---

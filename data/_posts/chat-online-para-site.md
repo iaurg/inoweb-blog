@@ -6,7 +6,7 @@ seoDescription: Um chat online no seu site pode facilitar na obtenção de clien
 date: "2019-03-04T16:46:29.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: marketing
 tags: dicas, marketing, chat, gratuito
 ---

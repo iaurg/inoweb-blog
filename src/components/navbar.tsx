@@ -4,6 +4,8 @@ import Container from "@components/container";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import inowebLogo from '../../public/images/inoweb.png'
+import inowebLogoWhite from '../../public/images/inowebwhite.png'
 
 type MenuItem = {
   label: string;
@@ -66,8 +68,8 @@ export default function Navbar(props) {
                 {theme == "light" ? (
                     <Link href="/">
                       <a>
-                        <img
-                          src="blog/img/logo-inoweb.png"
+                        <Image
+                          src={inowebLogo}
                           alt="Logo"
                           width={45}
                           height={45}
@@ -77,8 +79,8 @@ export default function Navbar(props) {
                   ) : (
                     <Link href="/">
                       <a>
-                        <img
-                          src="blog/img/logo-inoweb-white.png"
+                        <Image
+                          src={inowebLogoWhite}
                           alt="Logo"
                           width={45}
                           height={45}

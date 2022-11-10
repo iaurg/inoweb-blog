@@ -6,7 +6,7 @@ seoDescription: No WordPress WooCommerce você pode criar cupons de desconto. Ve
 date: "2019-03-11T17:34:16.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: wordpress
 tags: dicas, wordpress
 ---

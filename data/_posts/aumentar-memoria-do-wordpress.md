@@ -6,7 +6,7 @@ seoDescription: "O limite de memória padrão do Wordpress é 32MB, porém é mu
 date: "2019-04-23T14:34:43.000Z"
 author:
   name: Italo A.
-  picture: "/img/authors/italo.jpeg"
+  picture: "/images/authors/italo.jpeg"
 category: wordpress
 tags: wordpress, tutorial, performance
 ---
