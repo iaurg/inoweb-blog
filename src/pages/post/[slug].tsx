@@ -129,7 +129,7 @@ export default function Post({ post }: Props) {
                   <div className="relative flex-shrink-0 w-10 h-10">
                     {post.author.picture && (
                       <Image
-                        src={post.author.picture}
+                        src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}${post.author.picture}`}
                         objectFit="cover"
                         layout="fill"
                         alt={post?.author?.name}

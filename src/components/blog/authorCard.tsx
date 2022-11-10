@@ -8,7 +8,7 @@ export default function AuthorCard({ author }) {
         <div className="relative flex-shrink-0 w-24 h-24 mt-1 ">
           {author.picture && (
             <Image
-              src={author.picture}
+              src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}${author.picture}`}
               objectFit="cover"
               layout="fill"
               alt={author?.name}
