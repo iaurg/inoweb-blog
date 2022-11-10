@@ -65,7 +65,7 @@ export default function Navbar(props) {
                   ))}
                 </div>
                 <div className="flex justify-between items-center w-full md:w-auto">
-                {theme == "light" ? (
+                {theme == "light" || theme == "system" ? (
                     <Link href="/">
                       <a>
                         <Image
