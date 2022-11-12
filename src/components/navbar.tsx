@@ -40,8 +40,7 @@ export default function Navbar(props) {
     },
     {
       label: "Contato",
-      href: "/contato",
-      external: true
+      href: "/contato"
     }
   ];
 
