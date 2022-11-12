@@ -18,5 +18,7 @@ jobs:
           script: |
             source /home/inoweb0/nodevenv/inoweb-blog/16/bin/activate && cd /home/inoweb0/inoweb-blog
             eval `ssh-agent -s`; ssh-add ~/.ssh/inowebblog; git pull origin main
+            yarn remove tailwindcss postcss autoprefixer
+            yarn add tailwindcss@latest postcss@latest autoprefixer@latest
             yarn
             yarn build
