@@ -4,7 +4,7 @@ import Container from "@components/container";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import inowebLogo from '../../public/images/inowebwhite.png'
+import inowebLogo from '../../public/images/inoweb.png'
 import inowebLogoWhite from '../../public/images/inowebwhite.png'
 
 type MenuItem = {
