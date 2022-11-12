@@ -7,10 +7,8 @@ export default function AuthorCard({ author }) {
       <div className="flex flex-wrap items-start sm:space-x-6 sm:flex-nowrap">
         <div className="relative flex-shrink-0 w-24 h-24 mt-1 ">
           {author.picture && (
-            <Image
-              src={`${process.env.NEXT_PUBLIC_OG_SERVER_URL}${author.picture}`}
-              objectFit="cover"
-              layout="fill"
+            <img
+              src={`/blog${author.picture}`}
               alt={author?.name}
               className="rounded-full"
             />
