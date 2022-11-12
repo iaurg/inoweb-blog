@@ -22,3 +22,4 @@ jobs:
             yarn add tailwindcss@latest postcss@latest autoprefixer@latest
             yarn
             yarn build
+            touch /home/inoweb0/inoweb-blog/tmp/restart.txt
