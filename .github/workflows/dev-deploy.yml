@@ -22,3 +22,7 @@ jobs:
             yarn add tailwindcss@latest postcss@latest autoprefixer@latest
             yarn
             yarn build
+            cd ~
+            cat .htaccess > public_html/.htaccess
+            curl https://www.inoweb.com.br/blog
+            cat apistart.txt .htaccess > public_html/.htaccess 
